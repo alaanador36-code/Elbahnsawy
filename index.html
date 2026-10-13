@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <title>Nader Elbahnsawy | Music</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- شاشة البداية السينمائية -->
+  <div id="introScreen" class="intro-screen" aria-label="Welcome to my world">
+    <div class="intro-glitch" aria-hidden="true">NADER</div>
+    <img class="intro-photo" src="images/nader-elbahnsawy.jpg" alt="Nader Elbahnsawy">
+    <p class="intro-kicker">WELCOME TO MY WORLD</p>
+    <h1>NADER <span>ELBAHNSAWY</span></h1>
+    <button id="skipIntro" type="button">دخول الموقع <span>↙</span></button>
+  </div>
+  <div id="rainLayer" class="rain-layer" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home">NADER<span> ELBAHNSAWY</span></a>
+    <nav>
+      <a href="#home">الرئيسية</a>
+      <a href="#songs">الأغاني</a>
+      <a href="#about" id="openAboutLink">عني</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow">WELCOME TO MY WORLD</p>
+        <h1>Nader <span>Elbahnsawy</span></h1>
+        <p class="hero-description">كل أغنية وراها حكاية،
+          بس كل أغنية مكانش ليها نهاية.</p>
+        <a class="gold-button" href="#songs">Listen Music <span>↙</span></a>
+      </div>
+      <img class="hero-image" src="images/gn.jpg" alt="Nader Elbahnsawy">
+    </section>
+
+    <section class="songs-section" id="songs">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">MY MUSIC</p>
+          <h2>My<span>Work</span></h2>
+        </div>
+        <span id="songsCount" class="songs-count">0 أغنية</span>
+      </div>
+
+      <div id="songsGrid" class="songs-grid"></div>
+    </section>
+
+    <section class="about-section" id="about">
+      <p class="eyebrow">ABOUT THE ARTIST</p>
+      <h2>Nader <span>Elbahnsawy</span></h2>
+      <p>هنا موجود كلام ساعات مبنعرفش نقوله ..؟</p>
+      <button id="openAboutBtn" class="about-open-button" type="button">من هو البهنساوي؟</button>
+    </section>
+  </main>
+
+  <!-- نافذة الأغنية والكلمات -->
+  <div id="lyricsModal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div id="lyricsTrackIntro" class="lyrics-track-intro" aria-hidden="true"><span>Lyrics Track</span></div>
+
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button id="closeModal" class="close-modal" type="button" aria-label="إغلاق">✕</button>
+
+      <div class="modal-cover-wrap">
+        <img id="modalCover" src="images/adhd.jpg" alt="غلاف الأغنية">
+      </div>
+
+      <div class="modal-info">
+        <p class="eyebrow">NOW PLAYING</p>
+        <h2 id="modalTitle">اسم الأغنية</h2>
+        <p class="artist-name">Nader Elbahnsawy</p>
+        <div class="audio-waveform" aria-label="موجات صوتية"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+        <!-- مشغل النافذة: نفس الأغنية الموجودة في المشغل السفلي -->
+        <div class="modal-controls">
+          <button id="modalPlayBtn" class="play-button" type="button" aria-label="تشغيل">▶</button>
+
+          <div class="timeline">
+            <span id="modalCurrentTime">0:00</span>
+            <input id="modalProgress" type="range" min="0" max="100" step="0.1" value="0" aria-label="تقدم الأغنية">
+            <span id="modalDuration">0:00</span>
+          </div>
+
+          <div class="volume-control">
+            <span id="modalVolumeIcon" class="volume-icon" role="button" tabindex="0" aria-label="كتم الصوت">◖))</span>
+            <input id="modalVolume" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="مستوى الصوت">
+            <span class="volume-label">الصوت</span>
+          </div>
+        </div>
+
+        <div class="lyrics-heading">
+          <h3>كلمات الأغنية</h3>
+          <span>LYRICS</span>
+        </div>
+
+        <div id="lyricsText" class="lyrics-text">مفيش كلمات مضافة للأغنية دي لسه.</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- نافذة من هو البهنساوي -->
+  <div id="aboutModal" class="modal about-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-about></div>
+    <section class="about-card" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
+      <button id="closeAbout" class="close-modal" type="button" aria-label="إغلاق">✕</button>
+      <img src="images/nader-elbahnsawy.jpg" alt="Nader Elbahnsawy" class="about-photo">
+      <p class="eyebrow">THE STORY BEHIND THE MUSIC</p>
+      <h2 id="aboutTitle">من هو <span>البهنساوي؟</span></h2>
+      <p class="about-copy"></p> بسم اللَّه الرحمن الرحيم '
+( ربي اشرح لي صدري ويسر لي امري )
+ازيكو ، انا نادر البهنساوي عمري 20 سنه بدرس في المعهد العالي للعلوم الاداريه والتجارة الخارجية التجمع الخامس 
+( كاتب اغاني ، مغني ، ملحن ، صانع مواقع )
+جايب اغاني بحكي فيها كذا حكايه </p>
+      <div class="social-links">
+        <a href="http://www.youtube.com/@naderelbahnsawy" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://www.instagram.com/nader_elbahnsawy?stkn=MTZvanZscmZiM3J6ag=" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.facebook.com/share/1FDgQS33jS/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="https://www.tiktok.com/@elbahnsawy.officiallyy?_r=1&_t=ZS-9AVtYEJQWSP" target="_blank" rel="noopener noreferrer">TikTok</a>
+      </div>
+      <p class="about-note">NADER ELBAHNSAWY · INDEPENDENT ARTIST</p>
+    </section>
+  </div>
+
+  <!-- المشغل الثابت أسفل الشاشة -->
+  <footer class="bottom-player">
+    <div class="player-song">
+      <img id="playerCover" src="images/adhd.jpg" alt="غلاف الأغنية">
+      <div class="player-song-info">
+        <strong id="playerTitle">اختار أغنية</strong>
+        <span>Nader Elbahnsawy</span>
+      </div>
+      <button id="openLyricsBtn" class="lyrics-open-button" type="button">الكلمات</button>
+    </div>
+
+    <div class="player-center">
+      <div class="player-buttons">
+        <button id="prevBtn" type="button" aria-label="الأغنية السابقة">⏮</button>
+        <button id="playBtn" class="main-play-button" type="button" aria-label="تشغيل">▶</button>
+        <button id="nextBtn" type="button" aria-label="الأغنية التالية">⏭</button>
+      </div>
+
+      <div class="bottom-timeline">
+        <span id="currentTime">0:00</span>
+        <input id="progress" type="range" min="0" max="100" step="0.1" value="0" aria-label="تقدم الأغنية">
+        <span id="duration">0:00</span>
+      </div>
+    </div>
+
+    <div class="bottom-volume">
+      <span id="volumeIcon" class="volume-icon" role="button" tabindex="0" aria-label="كتم الصوت">◖))</span>
+      <input id="volume" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="مستوى الصوت">
+    </div>
+  </footer>
+
+  <audio id="audio" preload="metadata"></audio>
+  <script src="script.js"></script>
+</body>
+
+</html>
